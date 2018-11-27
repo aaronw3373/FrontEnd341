@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'FrontEnd341';
+  title = 'ClockPunchr';
+
+  user = {
+    name:"Aaron"
+  }
+
+  loginField = {
+    username: '',
+    password: ''
+  }
+
+  logout(){
+    console.log("Logout Command")
+  }
+  login(){
+    console.log("Logout Command: " + this.loginField.username + " : " + this.loginField.password)
+  }
+  createUser(){
+    console.log("Create User Command")
+  }
+
 }

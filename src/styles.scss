@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+// @import '~bootstrap/scss/bootstrap-reboot';
+// @import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/bootstrap';
+
+.container {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+.col-fixed-nav{
+    width:200px;
+    height: 100%;
+    border-right: 2px solid black;
+}
+.btn-nav{
+    margin-top: 8px;
+}
+.btn-nav-in{
+    width: 90%;
+}
