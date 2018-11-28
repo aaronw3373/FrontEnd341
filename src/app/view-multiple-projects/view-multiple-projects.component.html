@@ -1,0 +1,12 @@
+<p>
+  view-multiple-projects works!
+</p>
+
+<li *ngFor="let project of projects">
+  <a routerLink="/project/{{project.id}}">
+    <span class="badge"></span> View {{project.name}}
+  </a>
+  <!-- <a (click)="delete({{project.id}})">
+    <span class="badge"></span> Delete {{project.name}}
+  </a> -->
+</li>

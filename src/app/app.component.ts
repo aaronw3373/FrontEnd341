@@ -8,9 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ClockPunchr';
 
-  user = {
-    name:"Aaron"
-  }
+  user;
 
   loginField = {
     username: '',
@@ -19,9 +17,20 @@ export class AppComponent {
 
   logout(){
     console.log("Logout Command")
+    this.user = undefined;
+    this.loginField = {
+      username: '',
+      password: ''
+    }
   }
   login(){
-    console.log("Logout Command: " + this.loginField.username + " : " + this.loginField.password)
+    console.log("Login Command: " + this.loginField.username + " : " + this.loginField.password)
+    this.user = { name: this.loginField.username }
+    this.loginField = {
+      username: '',
+      password: ''
+    }
+    // Do Login, when I get user object back save it as user
   }
   createUser(){
     console.log("Create User Command")
