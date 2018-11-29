@@ -17,6 +17,29 @@ export class ViewProjectComponent implements OnInit {
   project;
   user;
 
+  newTime = {
+    startDate: '',
+    startTime: '',
+    endDate: '',
+    endTime: '',
+  }
+
+  times = [
+    {
+      startDate: "2018-10-25",
+      startTime: "08:01",
+      endDate: "2018-10-25",
+      endTime: "16:05"
+    },
+    {
+      startDate: "2018-10-26",
+      startTime: "08:30",
+      endDate: "2018-10-26",
+      endTime: "16:30"
+    },
+  ]
+
+
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
@@ -41,20 +64,21 @@ export class ViewProjectComponent implements OnInit {
   }
 
 
-  newTime(): void{
+  addNewTime(): void{
+    console.log(this.newTime)
   }
 
-  deleteTime(): void{
+  deleteTime(timeObj): void{
   }
 
-  updateTime(): void{
+  updateTime(timeObj): void{
   }
 
-  getTime():void{
-    //using project id
-  }
+  // getTime():void{
+  //   //using project id
+  // }
 
-  getInvoice():void{
+  creatInvoice():void{
     // using project id and user id
   }
 
