@@ -5,6 +5,8 @@ import { ProjectService } from '../project.service';
 import { UserService } from '../user.service';
 
 import { Time } from '../time';
+import { Project } from '../project';
+import { User } from '../user';
 
 
 @Component({
@@ -16,8 +18,8 @@ export class ViewProjectComponent implements OnInit {
   updatedProject = {
     name: ''
   }
-  project;
-  user;
+  project: Project;
+  user: User;
 
   newTime = {
     project: null,
@@ -28,14 +30,20 @@ export class ViewProjectComponent implements OnInit {
     endTime: '',
   }
 
-  times = [
+  times: Time[] = [
     {
+      id : 1,
+      project: 1,
+      user: 1,
       startDate: "2018-10-25",
       startTime: "08:01",
       endDate: "2018-10-25",
       endTime: "16:05"
     },
     {
+      id : 2,
+      project: 1,
+      user: 1,
       startDate: "2018-10-26",
       startTime: "08:30",
       endDate: "2018-10-26",
@@ -63,7 +71,7 @@ export class ViewProjectComponent implements OnInit {
   }
 
   updateProject(): void{
-    this.projectService.updateProject(this.updatedProject.name, this.user.id)
+    this.projectService.updateProject(this.updatedProject.name, this.project.id, this.user.id)
     .subscribe(project => this.project = project);
   }
 

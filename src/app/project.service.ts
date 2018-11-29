@@ -31,6 +31,27 @@ export class ProjectService {
       name: "third mock project"
   }
 
+  mockTimes: Time[] = [
+    {
+      id : 1,
+      project: 1,
+      user: 1,
+      startDate: "2018-10-25",
+      startTime: "08:01",
+      endDate: "2018-10-25",
+      endTime: "16:05"
+    },
+    {
+      id : 2,
+      project: 1,
+      user: 1,
+      startDate: "2018-10-26",
+      startTime: "08:30",
+      endDate: "2018-10-26",
+      endTime: "16:30"
+    },
+  ]
+
   getProjects(id):Observable<Project[]>{
     // return all projects
     // need user id to do this
@@ -58,10 +79,10 @@ export class ProjectService {
     return of("Sucess");
   }
 
-  updateProject(updatedProjectName, userId):Observable<Project>{
+  updateProject(updatedProjectName, projectId, userId):Observable<Project>{
     // get that specific id of a projects
     this.mockProject.name = updatedProjectName;
-    console.log("Updating: " + updatedProjectName + " userId: " + userId);
+    console.log("Updating: " + projectId + " to: " + updatedProjectName + " userId: " + userId);
     return of(this.mockProject);
   }
 
