@@ -2,6 +2,8 @@ export class Time {
     id: number;
     project: number;
     user: number;
-    sdate: Date;
-    edate: Date;
+    startDate: Date;
+    startTime: Time;
+    endDate: Date;
+    endTime: Time;
   }

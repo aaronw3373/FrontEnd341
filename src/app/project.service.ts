@@ -66,29 +66,32 @@ export class ProjectService {
   }
 
   ////////////////////////
-  newTime(time:Time):Observable<Time>{
-    return of();
+  newTime(time):Observable<String>{
+    //create new time
+    return of("Success");
   }
 
-  deleteTime(id:number):Observable<Time>{
-    return of();
+  deleteTime(id:number):Observable<String>{
+    //delete time
+    return of("Success");
   }
 
-  updateTime(time:Time):Observable<Time>{
-    return of();
+  updateTime(time:Time):Observable<String>{
+    // update time
+    return of("Success");
   }
 
-  getTime():Observable<Time[]>{
-    //using project id
-    return of();
-  }
+  // getTime():Observable<Time[]>{
+  //   //using project id
+  //   return of();
+  // }
 
 
   //////////////////////////////////////
-  // getInvoice():Observable<>{
-  //   // using project id and user id
-  //   return of();
-  // }
+  getInvoice(project, user):Observable<String>{
+    // using project id and user id
+    return of("INVOICE Coming in Hot");
+  }
 
 
 }

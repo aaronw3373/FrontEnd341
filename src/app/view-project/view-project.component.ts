@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { ProjectService } from '../project.service';
 import { UserService } from '../user.service';
 
+import { Time } from '../time';
+
 
 @Component({
   selector: 'app-view-project',
@@ -18,6 +20,8 @@ export class ViewProjectComponent implements OnInit {
   user;
 
   newTime = {
+    project: null,
+    user: null,
     startDate: '',
     startTime: '',
     endDate: '',
@@ -65,13 +69,26 @@ export class ViewProjectComponent implements OnInit {
 
 
   addNewTime(): void{
-    console.log(this.newTime)
+    this.newTime.project = this.project.id;
+    this.newTime.user = this.user.id
+    this.projectService.newTime(this.newTime)
+    .subscribe(res => {
+      this.getProject();
+    })
   }
 
-  deleteTime(timeObj): void{
+  deleteTime(timeObj:Time): void{
+    this.projectService.deleteTime(timeObj.id)
+    .subscribe(res => {
+      this.getProject();
+    })
   }
 
-  updateTime(timeObj): void{
+  updateTime(timeObj:Time): void{
+    this.projectService.updateTime(timeObj)
+    .subscribe(res => {
+      this.getProject();
+    })
   }
 
   // getTime():void{
@@ -80,6 +97,10 @@ export class ViewProjectComponent implements OnInit {
 
   creatInvoice():void{
     // using project id and user id
+    this.projectService.getInvoice(this.project.id, this.user.id)
+    .subscribe(res => {
+      console.log(res);
+    })
   }
 
 
