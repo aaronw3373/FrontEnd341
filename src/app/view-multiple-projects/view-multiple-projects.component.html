@@ -1,12 +1,14 @@
-<p>
-  view-multiple-projects works!
-</p>
-
-<li *ngFor="let project of projects">
-  <a routerLink="/project/{{project.id}}">
-    <span class="badge"></span> View {{project.name}}
-  </a>
-  <!-- <a (click)="delete({{project.id}})">
-    <span class="badge"></span> Delete {{project.name}}
-  </a> -->
-</li>
+<br>
+<h3>ALL PROJECTS YOU ARE ON:</h3>
+<br>
+<div style="margin-bottom:5px" class="row" *ngFor="let project of projects">
+  <div class="col-8">
+    <h5>{{project.name}}</h5>
+  </div>
+  <div  style="padding-left:0;" class="col-2">
+      <button style="width:100%" type="button" class="btn btn-outline-success" routerLink="/project/{{project.id}}">View</button>
+  </div>
+  <div style="padding-left:0;" class="col-2">
+    <button style="width:100%" type="button" class="btn btn-outline-danger" (click)="delete(project.id)">Delete</button>
+  </div>
+</div>

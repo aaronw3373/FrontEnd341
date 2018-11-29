@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-view-multiple-projects',
@@ -9,21 +10,25 @@ import { Project } from '../project';
 })
 export class ViewMultipleProjectsComponent implements OnInit {
   projects: Project[];
-  id;
+  user;
+
   constructor(
     private projectService: ProjectService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
-    // Fetch all projects that have my user id as a match
-    // set id from the current user.
-
-    this.projectService.getProjects(this.id)
-      .subscribe(projects => this.projects = projects);
-  }
+    this.userService.getUser().subscribe(user => 
+      {this.user = user;
+        this.projectService.getProjects(user.id).subscribe(projects => this.projects = projects);
+       }
+    ); 
+  };
 
   delete(id){
-    this.projectService.deleteProject(id);
+    this.projectService.deleteProject(id).subscribe(res => {
+      this.ngOnInit();
+    });    
   }
 
 }

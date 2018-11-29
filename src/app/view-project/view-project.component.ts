@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProjectService } from '../project.service';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -10,15 +11,21 @@ import { ProjectService } from '../project.service';
   styleUrls: ['./view-project.component.scss']
 })
 export class ViewProjectComponent implements OnInit {
+  updatedProject = {
+    name: ''
+  }
   project;
+  user;
 
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private location: Location
+    private location: Location,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.userService.getUser().subscribe(user => this.user = user); 
     this.getProject();
   }
 
@@ -29,6 +36,8 @@ export class ViewProjectComponent implements OnInit {
   }
 
   updateProject(): void{
+    this.projectService.updateProject(this.updatedProject.name, this.user.id)
+    .subscribe(project => this.project = project);
   }
 
 

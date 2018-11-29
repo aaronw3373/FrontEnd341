@@ -1,6 +1,8 @@
-<p>
-  create-project works!
-</p>
-<p>
-    add in fields and submit button use newProject as the model and createProject as the action to submit
-</p>
+<br>
+<h3>CREATING A NEW PROJECT:</h3>
+<div class="row">
+  <div class="col-12" style="padding-top: 10px;">
+    <input  class="form-control" type="text" [(ngModel)]="newProject.name" placeholder="Project Name">
+    <button type="button" class="btn btn-outline-secondary" (click)="createProject()">Create Project</button>
+  </div>
+</div>

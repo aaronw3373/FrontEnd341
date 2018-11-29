@@ -14,36 +14,55 @@ export class ProjectService {
     private http: HttpClient,
   ) { }
 
+  projects: Project[];
+  project: Project;
+
+  mockProjects: Project[] = [
+    {id: 1,
+      name: "first mock project"
+    },
+    {id: 2,
+      name: "second mock project"
+    }
+  ]
+
+  mockProject: Project = {
+      id: 3,
+      name: "third mock project"
+  }
+
   getProjects(id):Observable<Project[]>{
     // return all projects
     // need user id to do this
     console.log("Get all projects for this user");
-    return of();
+    return of(this.mockProjects);
   }
 
   getProject(id):Observable<Project>{
+    //TODO
     // get that specific id of a projects
     console.log("Get: " + id);
-    return of();
+    return of(this.mockProject);
   }
 
-  createProject(newProject):Observable<Project>{
+  createProject(newProjectName, userId):Observable<Project>{
     //create new project
     //get project object back from server
-    console.log("New: " + newProject);
-    return of();
+    console.log("New Project Name: " + newProjectName + " userId: " + userId);
+    return of(this.project);
   }
 
-  deleteProject(id):Observable<Project>{
+  deleteProject(id):Observable<String>{
     // get that specific id of a projects
     console.log("Deleting: " + id);
-    return of();
+    return of("Sucess");
   }
 
-  updateProject(updatedProject):Observable<Project>{
+  updateProject(updatedProjectName, userId):Observable<Project>{
     // get that specific id of a projects
-    console.log("Updating: " + updatedProject);
-    return of();
+    this.mockProject.name = updatedProjectName;
+    console.log("Updating: " + updatedProjectName + " userId: " + userId);
+    return of(this.mockProject);
   }
 
   ////////////////////////

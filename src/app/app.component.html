@@ -1,9 +1,9 @@
 
 <div class="row" style="border-bottom: 2px solid black;">
-  <h1 class="col-md-6" style="color: teal">
+  <h1 class="col-lg-6" style="color: teal">
     Welcome to {{ title }}!
   </h1>
-  <div *ngIf='user' class="col-md-6">
+  <div *ngIf='user' class="col-lg-6">
       <h1 style="text-align:right"> Logged in as {{user?.name}}
         <button type="button" class="btn btn-outline-secondary" (click)="logout()">
           Logout
@@ -11,7 +11,7 @@
       </h1>
   </div>
 
-  <div *ngIf='!user' class="col-md-6" style="padding-top: 10px;">
+  <div *ngIf='!user' class="col-lg-6" style="padding-top: 10px;">
       <div  class="input-group mb-3">
           <input  class="form-control" type="text" [(ngModel)]="loginField.username" placeholder="Username">
           <input  class="form-control" type="text" [(ngModel)]="loginField.password" placeholder="Password">
@@ -20,6 +20,20 @@
           </div>
       </div>      
   </div>
+
+  <div *ngIf='!user' class="col-12" style="padding-top: 10px;">
+    <div  class="input-group mb-3">
+        <input  class="form-control" type="text" [(ngModel)]="createField.name" placeholder="Username">
+        <input  class="form-control" type="text" [(ngModel)]="createField.password" placeholder="Password">
+        <input  class="form-control" type="text" [(ngModel)]="createField.company" placeholder="Company">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" (click)="createUser()">Create Account</button>
+        </div>
+    </div>      
+  </div>
+  
+
+
 </div>
 
 <div *ngIf='user' class="row">

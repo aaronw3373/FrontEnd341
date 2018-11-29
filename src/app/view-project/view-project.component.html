@@ -1,10 +1,8 @@
-<p>
-  view-project works!
-  user project as model to display
-  update button
-
-  get invoice
-
-  add time
-  view time and delete or update it
-</p>
+<br>
+<h3>PROJECT: {{project.name}}</h3>
+<div class="row">
+  <div class="col-12" style="padding-top: 10px;">
+    <input  class="form-control" type="text" [(ngModel)]="updatedProject.name" placeholder="New Project Name">
+    <button type="button" class="btn btn-outline-secondary" (click)="updateProject()">Update Project</button>
+  </div>
+</div>
