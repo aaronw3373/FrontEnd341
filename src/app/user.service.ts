@@ -17,6 +17,7 @@ export class UserService {
     private http: HttpClient,
   ) { }
   user:User;
+
   private BASEURL = "localhost:8888";
   private loginURL = "/login"
   private createURL = "/newaccount"
@@ -37,24 +38,42 @@ export class UserService {
       password: password
     }
     return this.http.post<User>(url, data).pipe(
-      tap(_ => console.log('logged in')),
+      tap(res => {
+        console.log('logged in');
+        console.log(res);
+        // this.user = res;
+      }),
       catchError(this.handleError('login', []))
     )
 
-
+    ////OLD////
     // this.user = this.mockUser;
     // return of(this.user);
   }
 
-  createAccount(name, password, company):Observable<User>{
-    //TODO
-    this.mockUser.name = name;
-    this.mockUser.company = company;
-    this.user = this.mockUser;
+  createAccount(name, password, company):Observable<any>{
+    const url = this.BASEURL + this.createURL;
+    const data = {
+      name: name,
+      password: password,
+      company: company,
+    }
+    return this.http.post<User>(url, data).pipe(
+      tap(res => {
+        console.log('creating account');
+        console.log(res);
+        // this.user = res;
+      }),
+      catchError(this.handleError('login', []))
+    )
 
-
-    return of(this.user);
+    ////OLD////
+    // this.mockUser.name = name;
+    // this.mockUser.company = company;
+    // this.user = this.mockUser;
+    // return of(this.user);
   }
+
   getUser():Observable<User>{
     return of(this.user);
   }
