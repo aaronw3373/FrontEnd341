@@ -79,26 +79,29 @@ export class ProjectService {
     return of("Sucess");
   }
 
-  updateProject(updatedProjectName, projectId, userId):Observable<Project>{
+  updateProject(project: Project, userId):Observable<Project>{
     // get that specific id of a projects
-    this.mockProject.name = updatedProjectName;
-    console.log("Updating: " + projectId + " to: " + updatedProjectName + " userId: " + userId);
+    this.mockProject = project;
+    console.log("Updating: " + project.id + " to: " + project.name + " under userId: " + userId);
     return of(this.mockProject);
   }
 
   ////////////////////////
   newTime(time):Observable<String>{
     //create new time
+    console.log("New Time");
     return of("Success");
   }
 
   deleteTime(id:number):Observable<String>{
     //delete time
+    console.log("Delete Time: " + id);
     return of("Success");
   }
 
   updateTime(time:Time):Observable<String>{
     // update time
+    console.log("update Time: " + time.id);
     return of("Success");
   }
 

@@ -15,11 +15,9 @@ import { User } from '../user';
   styleUrls: ['./view-project.component.scss']
 })
 export class ViewProjectComponent implements OnInit {
-  updatedProject = {
-    name: ''
-  }
   project: Project;
   user: User;
+  // times: Time[];
 
   newTime = {
     project: null,
@@ -71,7 +69,7 @@ export class ViewProjectComponent implements OnInit {
   }
 
   updateProject(): void{
-    this.projectService.updateProject(this.updatedProject.name, this.project.id, this.user.id)
+    this.projectService.updateProject(this.project, this.user.id)
     .subscribe(project => this.project = project);
   }
 
