@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Project } from './project';
 import { Time } from './time';
@@ -17,6 +18,10 @@ export class ProjectService {
   projects: Project[];
   project: Project;
 
+  private BASEURL = "localhost:8888";
+  private projecstURL = "/project/all"
+  
+  ////OLD////
   mockProjects: Project[] = [
     {id: 1,
       name: "first mock project"
@@ -53,10 +58,21 @@ export class ProjectService {
   ]
 
   getProjects(id):Observable<Project[]>{
+    const url = this.BASEURL + this.projecstURL;
+    return this.http.get<Project[]>(url).pipe(
+      tap(res => {
+        console.log('logged in');
+        console.log(res);
+        // this.user = res;
+      }),
+      catchError(this.handleError('login', []))
+    )
+    
+    ////OLD////
     // return all projects
     // need user id to do this
-    console.log("Get all projects for this user");
-    return of(this.mockProjects);
+    // console.log("Get all projects for this user");
+    // return of(this.mockProjects);
   }
 
   getProject(id):Observable<Project>{
@@ -117,5 +133,15 @@ export class ProjectService {
     return of("INVOICE Coming in Hot");
   }
 
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      console.error(error); // log to console
+   
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
 }

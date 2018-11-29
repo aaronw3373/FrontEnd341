@@ -16,20 +16,20 @@ export class UserService {
   constructor(
     private http: HttpClient,
   ) { }
+  
   user:User;
 
   private BASEURL = "localhost:8888";
   private loginURL = "/login"
   private createURL = "/newaccount"
 
-  
-  mockUser:User = {
-    id: 1,
-    name: 'Aaron',
-    company: 'ClockPunchr Inc.'
-  }
 
-
+  ////OLD////
+  // mockUser:User = {
+  //   id: 1,
+  //   name: 'Aaron',
+  //   company: 'ClockPunchr Inc.'
+  // }
 
   login(username, password):Observable<any>{
     const url = this.BASEURL + this.loginURL;
