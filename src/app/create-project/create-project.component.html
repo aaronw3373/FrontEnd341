@@ -1,8 +1,10 @@
 <br>
-<h3>CREATING A NEW PROJECT:</h3>
+<h3>New Project:</h3>
 <div class="row">
-  <div class="col-12" style="padding-top: 10px;">
+  <div class="col-12 input-group mb-3" style="padding-top: 10px;">
     <input  class="form-control" type="text" [(ngModel)]="newProject.name" placeholder="Project Name">
-    <button type="button" class="btn btn-outline-secondary" (click)="createProject()">Create Project</button>
+    <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" (click)="createProject()">Create Project</button>
+    </div>
   </div>
 </div>

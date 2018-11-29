@@ -1,8 +1,22 @@
 <br>
-<h3>PROJECT: {{project.name}}</h3>
+<h3>Project: {{project.name}}</h3>
 <div class="row">
-  <div class="col-12" style="padding-top: 10px;">
+  <div class="col-12 input-group mb-3" style="padding-top: 10px;">
     <input  class="form-control" type="text" [(ngModel)]="updatedProject.name" placeholder="New Project Name">
-    <button type="button" class="btn btn-outline-secondary" (click)="updateProject()">Update Project</button>
+    <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" (click)="updateProject()">Update Project</button>
+    </div>
   </div>
+</div>
+
+<div class="row">
+  INVOICE
+</div>
+
+<div class="row">
+  New Time
+</div>
+
+<div class="row">
+  Existing Time, with Update & Delete
 </div>
