@@ -20,16 +20,11 @@ export class CreateProjectComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(
-      res => 
-      {
-        console.log(res);
-        this.user = res[0]
-      });    
+    this.userService.getUser().subscribe(res => this.user = res);    
   }
 
   createProject(){    
-    this.projectService.createProject(this.newProject.name, this.user.id)
+    this.projectService.createProject(this.newProject.name, this.user.user_id)
       .subscribe(project => this.newProject = {name: ''});
       this.router.navigateByUrl('/projects');
   }

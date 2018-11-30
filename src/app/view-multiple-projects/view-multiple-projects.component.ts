@@ -19,8 +19,8 @@ export class ViewMultipleProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser().subscribe(user => 
-      {this.user = user[0];
-        this.projectService.getProjects(user.id).subscribe(projects => this.projects = projects);
+      {this.user = user;
+        this.projectService.getProjects(this.user.user_id).subscribe(projects => this.projects = projects);
        }
     ); 
   };
