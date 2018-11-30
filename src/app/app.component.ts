@@ -43,7 +43,14 @@ export class AppComponent {
   login(){
     // console.log("Login Command: " + this.loginField.username + " : " + this.loginField.password)
     this.userService.login(this.loginField.username, this.loginField.password)
-    .subscribe(user => this.user = user);
+    .subscribe(res =>  {
+      console.log(res);
+      if (res[0] != undefined){
+        if (res[0].name != undefined){
+          this.user = res[0];
+        }
+      }      
+    });
     this.loginField = {
       username: '',
       password: ''
@@ -54,7 +61,14 @@ export class AppComponent {
   createUser(){
     // console.log("Create User Command")
     this.userService.createAccount(this.createField.name, this.createField.password, this.createField.company)
-    .subscribe(user => this.user = user);
+    .subscribe(res =>  {
+      console.log(res);
+      if (res[0] != undefined){
+        if (res[0].name != undefined){
+          this.user = res[0];
+        }
+      }      
+    });
     this.createField = {
       name: '',
       password: '',

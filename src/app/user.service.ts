@@ -40,7 +40,7 @@ export class UserService {
     return this.http.post<any>(url, data).pipe(
       catchError(this.handleError('login', [])),
       tap(res => {
-        console.log(res);
+        // console.log(res);
         this.user = res[0];
       })
     )
@@ -60,7 +60,7 @@ export class UserService {
     return this.http.post<User>(url, data).pipe(
       catchError(this.handleError('create user', [])),
       tap(res => {
-        console.log(res);
+        // console.log(res);
         this.user = res[0];
       })
     )
