@@ -80,6 +80,8 @@ export class ViewProjectComponent implements OnInit {
   }
 
   updateTime(timeObj:Time): void{
+    timeObj.start_time = timeObj.start_time +":00.000Z";
+    timeObj.end_time = timeObj.start_time + "::00.000Z";
     this.projectService.updateTime(timeObj)
     .subscribe(res => {
       this.getProject();
