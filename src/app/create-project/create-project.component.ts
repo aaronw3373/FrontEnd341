@@ -20,7 +20,12 @@ export class CreateProjectComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(res => this.user = res[0]);    
+    this.userService.getUser().subscribe(
+      res => 
+      {
+        console.log(res);
+        this.user = res[0]
+      });    
   }
 
   createProject(){    
