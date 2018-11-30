@@ -39,7 +39,7 @@ export class ViewProjectComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUser().subscribe(user => this.user = user); 
+    this.userService.getUser().subscribe(user => this.user = user[0]); 
     this.getProject();
   }
 
@@ -49,7 +49,7 @@ export class ViewProjectComponent implements OnInit {
       .subscribe(project => 
         {
           this.project = project[0]
-          this.getTime();
+          this.getTimes();
         }      
       );
   }
@@ -84,7 +84,7 @@ export class ViewProjectComponent implements OnInit {
     })
   }
 
-  getTime():void{
+  getTimes():void{
     this.projectService.getTimes(this.project.id, this.user.id)
     .subscribe(res => {
       this.times = res

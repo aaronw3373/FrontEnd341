@@ -19,7 +19,7 @@ export class ViewMultipleProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser().subscribe(user => 
-      {this.user = user;
+      {this.user = user[0];
         this.projectService.getProjects(user.id).subscribe(projects => this.projects = projects);
        }
     ); 
