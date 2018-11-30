@@ -21,7 +21,7 @@ export class UserService {
 
   private BASEURL = "http://localhost:8888";
   private loginURL = "/login"
-  private createURL = "/newaccount"
+  private createURL = "/user"
 
 
   ////OLD////
@@ -41,7 +41,7 @@ export class UserService {
       catchError(this.handleError('login', [])),
       tap(res => {
         console.log(res);
-        // this.user = res;
+        this.user = res;
       })
     )
 
@@ -61,7 +61,7 @@ export class UserService {
       catchError(this.handleError('login', [])),
       tap(res => {
         console.log(res);
-        // this.user = res;
+        this.user = res;
       })
     )
 
