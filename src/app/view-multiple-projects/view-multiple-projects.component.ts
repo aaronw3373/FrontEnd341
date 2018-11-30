@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-view-multiple-projects',
@@ -10,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class ViewMultipleProjectsComponent implements OnInit {
   projects: Project[];
-  user;
+  user: User;
 
   constructor(
     private projectService: ProjectService,

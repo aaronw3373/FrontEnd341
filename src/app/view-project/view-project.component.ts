@@ -56,7 +56,9 @@ export class ViewProjectComponent implements OnInit {
 
   updateProject(): void{
     this.projectService.updateProject(this.project, this.user.user_id)
-    .subscribe(project => this.project = project);
+    .subscribe(project =>  {
+      this.getProject();
+    });
   }
 
 
