@@ -6,9 +6,9 @@
     <h5>{{project.name}}</h5>
   </div>
   <div  style="padding-left:0;" class="col-2">
-      <button style="width:100%" type="button" class="btn btn-outline-success" routerLink="/project/{{project.id}}">View</button>
+      <button style="width:100%" type="button" class="btn btn-outline-success" routerLink="/project/{{project.project_id}}">View</button>
   </div>
   <div style="padding-left:0;" class="col-2">
-    <button style="width:100%" type="button" class="btn btn-outline-danger" (click)="delete(project.id)">Delete</button>
+    <button style="width:100%" type="button" class="btn btn-outline-danger" (click)="delete(project.project_id)">Delete</button>
   </div>
 </div>

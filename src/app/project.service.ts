@@ -24,40 +24,41 @@ export class ProjectService {
   
   
   ////OLD////
-  mockProjects: Project[] = [
-    {id: 1,
-      name: "first mock project"
-    },
-    {id: 2,
-      name: "second mock project"
-    }
-  ]
+  // mockProjects: Project[] = [
+  //   {id: 1,
+  //     name: "first mock project"
+  //   },
+  //   {id: 2,
+  //     name: "second mock project"
+  //   }
+  // ]
 
-  mockProject: Project = {
-      id: 3,
-      name: "third mock project"
-  }
+  // mockProject: Project = {
+  //     id: 3,
+  //     name: "third mock project"
+  // }
 
-  mockTimes: Time[] = [
-    {
-      id : 1,
-      project: 1,
-      user: 1,
-      start_time: "2018-11-15T02:57",
-      end_time: "2018-11-15T05:57",
-    },
-    {
-      id : 2,
-      project: 1,
-      user: 1,
-      start_time: "2018-11-16T02:57",
-      end_time: "2018-11-16T08:57",
-    },
-  ]
+  // mockTimes: Time[] = [
+  //   {
+  //     id : 1,
+  //     project: 1,
+  //     user: 1,
+  //     start_time: "2018-11-15T02:57",
+  //     end_time: "2018-11-15T05:57",
+  //   },
+  //   {
+  //     id : 2,
+  //     project: 1,
+  //     user: 1,
+  //     start_time: "2018-11-16T02:57",
+  //     end_time: "2018-11-16T08:57",
+  //   },
+  // ]
 
 
   getProjects(id):Observable<Project[]>{
     const url = this.BASEURL + this.projecstURL + "/" + id + "/all";
+    console.log("about to make request for all projects")
     return this.http.get<Project[]>(url).pipe(
       catchError(this.handleError('get all projects', [])),
       tap(res => {
@@ -121,9 +122,9 @@ export class ProjectService {
   }
 
   updateProject(project: Project, userId):Observable<any>{
-    const url = this.BASEURL + this.projecstURL + "/"+ userId  + "/" + project.id;
+    const url = this.BASEURL + this.projecstURL + "/"+ userId  + "/" + project.project_id;
     const data = {
-      project_id: project.id,
+      project_id: project.project_id,
       name: project.name
     }
     return this.http.put<Project>(url, data).pipe(

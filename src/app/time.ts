@@ -1,5 +1,5 @@
 export class Time {
-    id: number;
+    entry_id: number;
     project: number;
     user: number;
     start_time: any;

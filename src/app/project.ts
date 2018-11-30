@@ -1,4 +1,4 @@
 export class Project {
-    id: number;
+    project_id: number;
     name: string;
   }

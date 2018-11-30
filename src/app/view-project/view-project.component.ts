@@ -61,7 +61,7 @@ export class ViewProjectComponent implements OnInit {
 
 
   addNewTime(): void{
-    this.newTime.project_id = this.project.id;
+    this.newTime.project_id = this.project.project_id;
     this.newTime.user_id = this.user.user_id
     console.log(this.newTime);
     this.projectService.newTime(this.newTime)
@@ -71,7 +71,7 @@ export class ViewProjectComponent implements OnInit {
   }
 
   deleteTime(timeObj:Time): void{
-    this.projectService.deleteTime(timeObj.id)
+    this.projectService.deleteTime(timeObj.entry_id)
     .subscribe(res => {
       this.getProject();
     })
@@ -85,7 +85,7 @@ export class ViewProjectComponent implements OnInit {
   }
 
   getTimes():void{
-    this.projectService.getTimes(this.project.id, this.user.user_id)
+    this.projectService.getTimes(this.project.project_id, this.user.user_id)
     .subscribe(res => {
       this.times = res
     })
@@ -93,7 +93,7 @@ export class ViewProjectComponent implements OnInit {
 
   creatInvoice():void{
     // using project id and user id
-    this.projectService.getInvoice(this.project.id, this.user.user_id, this.invoice.start, this.invoice.end)
+    this.projectService.getInvoice(this.project.project_id, this.user.user_id, this.invoice.start, this.invoice.end)
     .subscribe(res => {
       console.log(res);
       this.totalHours = res;
