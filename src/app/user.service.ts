@@ -41,7 +41,7 @@ export class UserService {
       catchError(this.handleError('login', [])),
       tap(res => {
         console.log(res);
-        this.user = res;
+        this.user = res[0];
       })
     )
 
@@ -61,7 +61,7 @@ export class UserService {
       catchError(this.handleError('login', [])),
       tap(res => {
         console.log(res);
-        this.user = res;
+        this.user = res[0];
       })
     )
 
