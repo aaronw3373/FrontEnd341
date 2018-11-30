@@ -142,7 +142,7 @@ export class ProjectService {
   ////////////////////////
   newTime(time):Observable<any>{
     const url = this.BASEURL + this.timeURL + "/0/0/0";
-    return this.http.put<Project>(url, time).pipe(
+    return this.http.post<Project>(url, time).pipe(
       catchError(this.handleError('update project', [])),
       tap(res => {
         console.log(res);
