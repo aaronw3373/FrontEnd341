@@ -25,29 +25,29 @@ export class UserService {
 
 
   ////OLD////
-  mockUser:User = {
-    id: 1,
-    name: 'Aaron',
-    company: 'ClockPunchr Inc.'
-  }
+  // mockUser:User = {
+  //   id: 1,
+  //   name: 'Aaron',
+  //   company: 'ClockPunchr Inc.'
+  // }
 
   login(username, password):Observable<any>{
-    // const url = this.BASEURL + this.loginURL;
-    // const data = {
-    //   name: username,
-    //   password: password
-    // }
-    // return this.http.post<any>(url, data).pipe(
-    //   catchError(this.handleError('login', [])),
-    //   tap(res => {
-    //     // console.log(res);
-    //     this.user = res[0];
-    //   })
-    // )
+    const url = this.BASEURL + this.loginURL;
+    const data = {
+      name: username,
+      password: password
+    }
+    return this.http.post<any>(url, data).pipe(
+      catchError(this.handleError('login', [])),
+      tap(res => {
+        // console.log(res);
+        this.user = res[0];
+      })
+    )
 
     ////OLD////
-    this.user = this.mockUser;
-    return of(this.user);
+    // this.user = this.mockUser;
+    // return of(this.user);
   }
 
   createAccount(name, password, company):Observable<any>{
