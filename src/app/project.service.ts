@@ -93,6 +93,7 @@ export class ProjectService {
       user_id: userId,
       name: newProjectName
     }
+    console.log(data);
     return this.http.post<Project>(url, data).pipe(
       catchError(this.handleError('create project', [])),
       tap(res => {
