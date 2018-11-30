@@ -194,7 +194,7 @@ export class ProjectService {
 
   //////////////////////////////////////
   getInvoice(project, user, start, end):Observable<any>{
-    const url = this.BASEURL + "/invoice/" +  user+ "/" + project +"";
+    const url = this.BASEURL + "/invoice/" +  user+ "/" + project;
     const data = {
       start_time: start,
       end_time: end
