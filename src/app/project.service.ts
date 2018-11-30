@@ -166,18 +166,18 @@ export class ProjectService {
     // return of("Success");
   }
 
-  updateTime(time:Time):Observable<any>{
-    const url = this.BASEURL + this.timeURL + "/0/0/0";
-    return this.http.put<Project>(url, time).pipe(
-      catchError(this.handleError('update project', [])),
-      tap(res => {
-        console.log(res);
-      })
-    )
+  // updateTime(time:Time):Observable<any>{
+  //   const url = this.BASEURL + this.timeURL + "/0/0/0";
+  //   return this.http.put<Project>(url, time).pipe(
+  //     catchError(this.handleError('update project', [])),
+  //     tap(res => {
+  //       console.log(res);
+  //     })
+  //   )
     // update time
     // console.log("update Time: " + time.id);
     // return of("Success");
-  }
+  // }
 
   getTimes(projectId, userId):Observable<Time[]>{
     const url = this.BASEURL + this.timeURL + "/" + userId + "/" + projectId +"/all";

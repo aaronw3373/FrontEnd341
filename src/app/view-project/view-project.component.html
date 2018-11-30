@@ -30,8 +30,6 @@
   <div class="col-12 input-group mb-3" style="padding-top: 10px;">
     <input  class="form-control" type="datetime-local" [(ngModel)]="newTime.start_time">
     <input  class="form-control" type="datetime-local" [(ngModel)]="newTime.end_time">
-    <!-- <input  class="form-control" type="date" [(ngModel)]="newTime.endDate"> -->
-    <!-- <input  class="form-control" type="time" [(ngModel)]="newTime.endTime"> -->
     <div class="input-group-append">
         <button type="button" class="btn btn-outline-secondary" (click)="addNewTime()">Add Time</button>
     </div>
@@ -44,11 +42,9 @@
     <div class="col-12 input-group mb-3" style="padding-top: 10px;">
         <input  class="form-control" type="datetime-local" [(ngModel)]="time.start_time">
         <input  class="form-control" type="datetime-local" [(ngModel)]="time.end_time">
-        <!-- <input  class="form-control" type="date" [(ngModel)]="time.endDate"> -->
-        <!-- <input  class="form-control" type="time" [(ngModel)]="time.endTime"> -->
-        <div class="input-group-append">
+        <!-- <div class="input-group-append">
             <button type="button" class="btn btn-outline-secondary" (click)="updateTime(time)">Update Time</button>
-        </div>
+        </div> -->
         <div class="input-group-append">
             <button type="button" class="btn btn-outline-danger" (click)="deleteTime(time)">Delete Time</button>
         </div>
