@@ -106,8 +106,10 @@ export class ViewProjectComponent implements OnInit {
     this.projectService.getInvoice(this.project.project_id, this.user.user_id, this.invoice.start, this.invoice.end)
     .subscribe(res => {
       console.log(res);
+      console.log(this.pay);    
       this.totalHours = res[0].hours;
       this.totalPay = this.totalHours * this.pay;
+      console.log(this.totalPay);
     })
   }
 
