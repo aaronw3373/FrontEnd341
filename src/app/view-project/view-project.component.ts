@@ -19,7 +19,7 @@ export class ViewProjectComponent implements OnInit {
   user: User;
   times: Time[];
   totalHours: number = -1; 
-  pay: number;
+  pay: number = 0;
   totalPay: number;
 
   newTime = {
