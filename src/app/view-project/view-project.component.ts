@@ -19,6 +19,8 @@ export class ViewProjectComponent implements OnInit {
   user: User;
   times: Time[];
   totalHours: number = -1; 
+  pay: number;
+  totalPay: number;
 
   newTime = {
     project_id: null,
@@ -105,6 +107,7 @@ export class ViewProjectComponent implements OnInit {
     .subscribe(res => {
       console.log(res);
       this.totalHours = res[0].hours;
+      this.totalPay = this.totalHours * this.pay;
     })
   }
 
