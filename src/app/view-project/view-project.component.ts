@@ -90,6 +90,10 @@ export class ViewProjectComponent implements OnInit {
     this.projectService.getTimes(this.project.project_id, this.user.user_id)
     .subscribe(res => {
       this.times = res
+      this.times.forEach(time => {
+        time.start_time = time.start_time.slice(0,-8);
+        time.end_time = time.end_time.slice(0, -8);
+      });
     })
   }
 
