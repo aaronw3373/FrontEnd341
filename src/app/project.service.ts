@@ -24,40 +24,37 @@ export class ProjectService {
   
   
   ////OLD////
-  // mockProjects: Project[] = [
-  //   {id: 1,
-  //     name: "first mock project"
-  //   },
-  //   {id: 2,
-  //     name: "second mock project"
-  //   }
-  // ]
+  mockProjects: Project[] = [
+    {id: 1,
+      name: "first mock project"
+    },
+    {id: 2,
+      name: "second mock project"
+    }
+  ]
 
-  // mockProject: Project = {
-  //     id: 3,
-  //     name: "third mock project"
-  // }
+  mockProject: Project = {
+      id: 3,
+      name: "third mock project"
+  }
 
-  // mockTimes: Time[] = [
-  //   {
-  //     id : 1,
-  //     project: 1,
-  //     user: 1,
-  //     startDate: "2018-10-25",
-  //     startTime: "08:01",
-  //     endDate: "2018-10-25",
-  //     endTime: "16:05"
-  //   },
-  //   {
-  //     id : 2,
-  //     project: 1,
-  //     user: 1,
-  //     startDate: "2018-10-26",
-  //     startTime: "08:30",
-  //     endDate: "2018-10-26",
-  //     endTime: "16:30"
-  //   },
-  // ]
+  mockTimes: Time[] = [
+    {
+      id : 1,
+      project: 1,
+      user: 1,
+      start_time: "2018-11-15T02:57",
+      end_time: "2018-11-15T05:57",
+    },
+    {
+      id : 2,
+      project: 1,
+      user: 1,
+      start_time: "2018-11-16T02:57",
+      end_time: "2018-11-16T08:57",
+    },
+  ]
+
 
   getProjects(id):Observable<Project[]>{
     const url = this.BASEURL + this.projecstURL + "/" + id + "/all";
@@ -87,7 +84,7 @@ export class ProjectService {
     )
     // get that specific id of a projects
     // console.log("Get: " + id);
-    // return of(this.mockProject);
+    // return of(this.mockProjects);
   }
 
   createProject(newProjectName, userId):Observable<any>{
@@ -189,14 +186,24 @@ export class ProjectService {
       })
     )
     //using project id
-    // return of();
+    // return of(this.mockTimes);
   }
 
 
   //////////////////////////////////////
-  getInvoice(project, user):Observable<String>{
-    // using project id and user id
-    return of("INVOICE Coming in Hot");
+  getInvoice(project, user, start, end):Observable<any>{
+    const url = this.BASEURL + "/invoice/" +  user+ "/" + project +"";
+    const data = {
+      start_time: start,
+      end_time: end
+    }
+    return this.http.post<any>(url, data).pipe(
+      catchError(this.handleError('update project', [])),
+      tap(res => {
+        console.log(res);
+      })
+    )
+    return of();
   }
 
 

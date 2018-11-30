@@ -18,6 +18,7 @@ export class ViewProjectComponent implements OnInit {
   project: Project;
   user: User;
   times: Time[];
+  totalHours: number = -1; 
 
   newTime = {
     project_id: null,
@@ -25,28 +26,10 @@ export class ViewProjectComponent implements OnInit {
     start_time: '',
     end_time: '',
   }
-
-  // times: Time[] = [
-  //   {
-  //     id : 1,
-  //     project: 1,
-  //     user: 1,
-  //     startDate: "2018-10-25",
-  //     startTime: "08:01",
-  //     endDate: "2018-10-25",
-  //     endTime: "16:05"
-  //   },
-  //   {
-  //     id : 2,
-  //     project: 1,
-  //     user: 1,
-  //     startDate: "2018-10-26",
-  //     startTime: "08:30",
-  //     endDate: "2018-10-26",
-  //     endTime: "16:30"
-  //   },
-  // ]
-
+  invoice = {
+    start: '',
+    end: '',
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -63,7 +46,12 @@ export class ViewProjectComponent implements OnInit {
   getProject(): void{
     const id = + this.route.snapshot.paramMap.get('id');
     this.projectService.getProject(id)
-      .subscribe(project => this.project = project[0]);
+      .subscribe(project => 
+        {
+          this.project = project[0]
+          this.getTime();
+        }      
+      );
   }
 
   updateProject(): void{
@@ -75,6 +63,7 @@ export class ViewProjectComponent implements OnInit {
   addNewTime(): void{
     this.newTime.project_id = this.project.id;
     this.newTime.user_id = this.user.id
+    console.log(this.newTime);
     this.projectService.newTime(this.newTime)
     .subscribe(res => {
       this.getProject();
@@ -99,15 +88,15 @@ export class ViewProjectComponent implements OnInit {
     this.projectService.getTimes(this.project.id, this.user.id)
     .subscribe(res => {
       this.times = res
-      this.getProject();
     })
   }
 
   creatInvoice():void{
     // using project id and user id
-    this.projectService.getInvoice(this.project.id, this.user.id)
+    this.projectService.getInvoice(this.project.id, this.user.id, this.invoice.start, this.invoice.end)
     .subscribe(res => {
       console.log(res);
+      this.totalHours = res;
     })
   }
 

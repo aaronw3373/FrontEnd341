@@ -49,7 +49,10 @@ export class AppComponent {
         if (res[0].name != undefined){
           this.user = res[0];
         }
-      }      
+      }   
+      if(res.name != undefined){
+        this.user = res;
+      }    
     });
     this.loginField = {
       username: '',

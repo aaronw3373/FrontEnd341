@@ -25,11 +25,11 @@ export class UserService {
 
 
   ////OLD////
-  // mockUser:User = {
-  //   id: 1,
-  //   name: 'Aaron',
-  //   company: 'ClockPunchr Inc.'
-  // }
+  mockUser:User = {
+    id: 1,
+    name: 'Aaron',
+    company: 'ClockPunchr Inc.'
+  }
 
   login(username, password):Observable<any>{
     const url = this.BASEURL + this.loginURL;
