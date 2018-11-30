@@ -19,7 +19,7 @@ export class UserService {
   
   user:User;
 
-  private BASEURL = "localhost:8888";
+  private BASEURL = "http://localhost:8888";
   private loginURL = "/login"
   private createURL = "/newaccount"
 
@@ -37,13 +37,12 @@ export class UserService {
       name: username,
       password: password
     }
-    return this.http.post<User>(url, data).pipe(
+    return this.http.post<any>(url, data).pipe(
+      catchError(this.handleError('login', [])),
       tap(res => {
-        console.log('logged in');
         console.log(res);
         // this.user = res;
-      }),
-      catchError(this.handleError('login', []))
+      })
     )
 
     ////OLD////
@@ -59,12 +58,11 @@ export class UserService {
       company: company,
     }
     return this.http.post<User>(url, data).pipe(
+      catchError(this.handleError('login', [])),
       tap(res => {
-        console.log('creating account');
         console.log(res);
         // this.user = res;
-      }),
-      catchError(this.handleError('login', []))
+      })
     )
 
     ////OLD////

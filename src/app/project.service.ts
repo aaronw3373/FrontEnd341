@@ -18,7 +18,7 @@ export class ProjectService {
   projects: Project[];
   project: Project;
 
-  private BASEURL = "localhost:8888";
+  private BASEURL = "http://localhost:8888";
   private projecstURL = "/project/all"
   
   ////OLD////
@@ -60,12 +60,11 @@ export class ProjectService {
   getProjects(id):Observable<Project[]>{
     const url = this.BASEURL + this.projecstURL;
     return this.http.get<Project[]>(url).pipe(
+      catchError(this.handleError('login', [])),
       tap(res => {
-        console.log('logged in');
         console.log(res);
         // this.user = res;
-      }),
-      catchError(this.handleError('login', []))
+      })
     )
     
     ////OLD////

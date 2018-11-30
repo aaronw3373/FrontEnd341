@@ -31,7 +31,7 @@ export class AppComponent {
   }
 
   logout(){
-    console.log("Logout Command")
+    // console.log("Logout Command")
     this.user = undefined;
     this.loginField = {
       username: '',
@@ -41,7 +41,7 @@ export class AppComponent {
   }
 
   login(){
-    console.log("Login Command: " + this.loginField.username + " : " + this.loginField.password)
+    // console.log("Login Command: " + this.loginField.username + " : " + this.loginField.password)
     this.userService.login(this.loginField.username, this.loginField.password)
     .subscribe(user => this.user = user);
     this.loginField = {
@@ -52,7 +52,7 @@ export class AppComponent {
   }
 
   createUser(){
-    console.log("Create User Command")
+    // console.log("Create User Command")
     this.userService.createAccount(this.createField.name, this.createField.password, this.createField.company)
     .subscribe(user => this.user = user);
     this.createField = {
