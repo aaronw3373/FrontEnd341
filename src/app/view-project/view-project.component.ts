@@ -17,37 +17,35 @@ import { User } from '../user';
 export class ViewProjectComponent implements OnInit {
   project: Project;
   user: User;
-  // times: Time[];
+  times: Time[];
 
   newTime = {
-    project: null,
-    user: null,
-    startDate: '',
-    startTime: '',
-    endDate: '',
-    endTime: '',
+    project_id: null,
+    user_id: null,
+    start_time: '',
+    end_time: '',
   }
 
-  times: Time[] = [
-    {
-      id : 1,
-      project: 1,
-      user: 1,
-      startDate: "2018-10-25",
-      startTime: "08:01",
-      endDate: "2018-10-25",
-      endTime: "16:05"
-    },
-    {
-      id : 2,
-      project: 1,
-      user: 1,
-      startDate: "2018-10-26",
-      startTime: "08:30",
-      endDate: "2018-10-26",
-      endTime: "16:30"
-    },
-  ]
+  // times: Time[] = [
+  //   {
+  //     id : 1,
+  //     project: 1,
+  //     user: 1,
+  //     startDate: "2018-10-25",
+  //     startTime: "08:01",
+  //     endDate: "2018-10-25",
+  //     endTime: "16:05"
+  //   },
+  //   {
+  //     id : 2,
+  //     project: 1,
+  //     user: 1,
+  //     startDate: "2018-10-26",
+  //     startTime: "08:30",
+  //     endDate: "2018-10-26",
+  //     endTime: "16:30"
+  //   },
+  // ]
 
 
   constructor(
@@ -65,7 +63,7 @@ export class ViewProjectComponent implements OnInit {
   getProject(): void{
     const id = + this.route.snapshot.paramMap.get('id');
     this.projectService.getProject(id)
-      .subscribe(project => this.project = project);
+      .subscribe(project => this.project = project[0]);
   }
 
   updateProject(): void{
@@ -75,8 +73,8 @@ export class ViewProjectComponent implements OnInit {
 
 
   addNewTime(): void{
-    this.newTime.project = this.project.id;
-    this.newTime.user = this.user.id
+    this.newTime.project_id = this.project.id;
+    this.newTime.user_id = this.user.id
     this.projectService.newTime(this.newTime)
     .subscribe(res => {
       this.getProject();
@@ -97,9 +95,13 @@ export class ViewProjectComponent implements OnInit {
     })
   }
 
-  // getTime():void{
-  //   //using project id
-  // }
+  getTime():void{
+    this.projectService.getTimes(this.project.id, this.user.id)
+    .subscribe(res => {
+      this.times = res
+      this.getProject();
+    })
+  }
 
   creatInvoice():void{
     // using project id and user id

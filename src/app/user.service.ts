@@ -58,7 +58,7 @@ export class UserService {
       company: company,
     }
     return this.http.post<User>(url, data).pipe(
-      catchError(this.handleError('login', [])),
+      catchError(this.handleError('create user', [])),
       tap(res => {
         console.log(res);
         this.user = res[0];
